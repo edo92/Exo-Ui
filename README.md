@@ -31,7 +31,6 @@ const App = () => (
   </>
 );
 ```
-
 And set up layout styles manually:
 
 ```js
@@ -43,3 +42,4 @@ const App = () => (
   </Layout>
 );
 ```
+
