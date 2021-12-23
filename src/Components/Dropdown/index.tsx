@@ -1,0 +1,40 @@
+import React, { useState } from "react";
+import { Container, Header, Body, Divider } from "./styles";
+
+export interface DropdownProps extends ElemDarkLightColorTypes {
+  className?: string;
+  header: JSX.Element | string;
+  children?: JSX.Element;
+}
+
+const Dropdown: React.FC<DropdownProps> = (props) => {
+  const [active, setStatus] = useState(false);
+  const [init, initialize] = useState(false);
+
+  const handleToggle = () => {
+    setStatus(!active);
+    initialize(true);
+  };
+
+  return (
+    <Container className={props.className}>
+      <Header
+        active={active}
+        onClick={handleToggle}
+        colorType={props.color}
+        className="drop-header"
+      >
+        <>{props.header}</>
+      </Header>
+
+      <Body init={!init} active={active} colorType={props.color}>
+        <>
+          <Divider />
+          {props.children}
+        </>
+      </Body>
+    </Container>
+  );
+};
+
+export default Dropdown;
