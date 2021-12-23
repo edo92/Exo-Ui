@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "Components/*": ["./src/Components/*"],
+      "Shared/*": ["./src/Shared/*"],
+      "Assets/*": ["./src/Assets/*"],
+      "Layout": ["./src/Layout"],
+      "theme": ["./src/theme"]
+    }
+  }
+}
