@@ -1,15 +1,16 @@
 import React from "react";
 import { FieldRow, FieldCol } from "./styles";
 
-export interface FieldProps {
+interface TagBase {
   className?: string;
   children: JSX.Element | JSX.Element[];
 }
 
-const Field: React.FC<FieldProps> = (props: {
-  children: JSX.Element | JSX.Element[];
-  className?: string;
-}) => {
+export interface FieldProps extends TagBase {
+  gap?: number;
+}
+
+const Field: React.FC<FieldProps> = (props) => {
   return (
     <FieldRow>
       <>
@@ -28,6 +29,7 @@ const Field: React.FC<FieldProps> = (props: {
             return (
               <FieldCol
                 key={index}
+                gap={props.gap}
                 className={props.className}
                 col={props.children.length}
               >
