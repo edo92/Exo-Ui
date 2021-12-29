@@ -27,7 +27,12 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
         <>{props.header}</>
       </Header>
 
-      <Body init={!init} active={active} colorType={props.color}>
+      <Body
+        init={!init}
+        active={active}
+        colorType={props.color}
+        className="drop-body"
+      >
         <>
           <Divider />
           {props.children}
