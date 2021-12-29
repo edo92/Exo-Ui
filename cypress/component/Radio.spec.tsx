@@ -1,8 +1,8 @@
 import React from "react";
 import { mount } from "@cypress/react";
 
-import { styles as theme } from "theme";
 import Layout from "Layout";
+import { styles as theme } from "theme";
 import { sizeList, colorList } from "../helpers";
 import Radio, { RadioProps } from "Components/Radio";
 
@@ -31,9 +31,9 @@ describe("Dynamic Colors", () => {
       mount(<Element color={colorType} />);
       const color = primaryColors({ theme, colorType });
 
-      cy.get(".radio-element").click();
-      cy.get(".radio-element")
-        .pseudoCss("background", "after")
+      cy.get(".radio-element", { timeout: 1000 }).click();
+      cy.get(".radio-element", { timeout: 1000 })
+        .pseudoCss("background-color", "after")
         .parseColor()
         .should("equal", color);
     });
