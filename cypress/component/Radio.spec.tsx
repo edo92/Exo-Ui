@@ -33,7 +33,7 @@ describe("Dynamic Colors", () => {
 
       cy.get(".radio-element").click();
       cy.get(".radio-element")
-        .pseudoCss("background-color", "after")
+        .pseudoCss("background", "after")
         .parseColor()
         .should("equal", color);
     });
