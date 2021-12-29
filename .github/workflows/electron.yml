@@ -8,6 +8,7 @@ on:
       - config/**
       - github/**
       - package.json
+
 jobs:
   electron:
     runs-on: ubuntu-latest
