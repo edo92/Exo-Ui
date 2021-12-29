@@ -18,7 +18,7 @@ const Element: React.FC<BreadcrumbProps> = (props) => (
 
 describe("Font Color", () => {
   it("Active", () => {
-    steps.forEach((step, index) => {
+    steps.forEach((_, index) => {
       mount(<Element steps={steps} active={index} />);
 
       const activeColor = secondaryFontColors({ theme, colorType: "dark" });
@@ -31,7 +31,7 @@ describe("Font Color", () => {
   });
 
   it("Inactive", () => {
-    steps.forEach((step, index) => {
+    steps.forEach((_, index) => {
       mount(<Element steps={steps} active={index} />);
 
       const inactiveColor = secondaryFontColors({
@@ -39,7 +39,7 @@ describe("Font Color", () => {
         colorType: "primary",
       });
       cy.get(".breadcrumb-element>li")
-        .eq(index - 1)
+        .eq(index)
         .find("a")
         .should("have.css", "color", inactiveColor);
     });
