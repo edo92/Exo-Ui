@@ -8,24 +8,28 @@ import { darkLightColors } from "../helpers";
 import { primaryHighlight } from "Shared/dynamic";
 import Dropdown from "Components/Dropdown";
 
-const Element: React.FC<ElemDarkLightColorTypes> = (props) => (
+const Element: React.FC<ElemDarkLightColorTypes & { size?: string }> = (
+  props
+) => (
   <Layout>
-    <Dropdown header="hello" className="drop-element" color={props.color} />
+    <Dropdown header="hello" className="drop-element" color={props.color}>
+      <div style={{ height: props.size || "100px" }}></div>
+    </Dropdown>
   </Layout>
 );
 
 describe("Open / Close", () => {
-  beforeEach(() => {
-    mount(<Element />);
-  });
-
   it("Closed", () => {
-    cy.get(".drop-element").should("have.css", "height", "0px");
+    mount(<Element />);
+    cy.get(".drop-body").should("have.css", "height", "0px");
   });
 
-  it("Open", () => {
-    cy.get(".drop-header").click();
-    cy.get(".drop-element").should("have.css", "height", "200px");
+  ["150px", "200px", "250px"].forEach((size) => {
+    it("Open", () => {
+      mount(<Element size={size} />);
+      cy.get(".drop-header").click();
+      cy.get(".drop-body").should("have.css", "height", size);
+    });
   });
 });
 
