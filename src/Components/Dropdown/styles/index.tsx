@@ -6,7 +6,6 @@ import {
   IActive,
   toggleAnim,
   dynamicHight,
-  dynamicDivider,
   dynamicPadding,
   visibility,
 } from "./dynamic";
