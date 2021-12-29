@@ -33,37 +33,40 @@ const Elem: React.FC<ElemProps> = (props) => {
 
 const elems = [0, 1, 2, 3, 4, 5];
 
-describe("Elements", () => {
-  it("Row", () => {
-    mount(
-      <Field>
-        {elems.map((elem) => (
-          <Elem key={elem} />
-        ))}
-      </Field>
-    );
-  });
-
-  it("One Line", () => {
-    mount(
-      <Field className="elementasdf">
-        {elems.map((elem) => (
-          <Elem className="element" key={elem} />
-        ))}
-      </Field>
-    );
-
+describe("Field Elements", () => {
+  const verifyElemWidth = (expectWidth: number) => {
     cy.get(".element").each(($elem) => {
       expect($elem.position().top).equal(0);
-
       //
       const elementWidth = $elem.width();
-      const winWidth = window.innerWidth / elems.length;
-      expect(elementWidth).closeTo(winWidth, 0.1);
-
+      expect(elementWidth).closeTo(expectWidth, 0.5);
       //
       const top = $elem.position().top;
       expect(top).equal(0);
+    });
+  };
+
+  describe("Single Element", () => {
+    it("Row", () => {
+      mount(
+        <Field>
+          <Elem className="element" />
+        </Field>
+      );
+      verifyElemWidth(window.innerWidth);
+    });
+  });
+
+  describe("Many Elements", () => {
+    it("Row", () => {
+      mount(
+        <Field>
+          {elems.map((elem) => (
+            <Elem className="element" key={elem} />
+          ))}
+        </Field>
+      );
+      verifyElemWidth(window.innerWidth / elems.length);
     });
   });
 });
