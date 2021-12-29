@@ -1,0 +1,37 @@
+on:
+  push:
+    branches: ["*"]
+
+jobs:
+  edge:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+
+      - name: Restore node_modules
+        id: cache-edge
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node-modules-1${{ hashFiles('package.json') }}
+
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: C:\Users\runneradmin\AppData\Local\Cypress\Cache
+          key: cypress-binary-1${{ hashFiles('C:\Users\runneradmin\AppData\Local\Cypress\Cache') }}
+
+      - name: Install
+        run: |
+          npm run setup
+          npx cypress install
+
+      - name: Edge
+        run: npm run test:edge
