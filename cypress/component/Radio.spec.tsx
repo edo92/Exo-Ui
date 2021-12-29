@@ -31,8 +31,9 @@ describe("Dynamic Colors", () => {
       mount(<Element color={colorType} />);
       const color = primaryColors({ theme, colorType });
 
-      cy.get(".radio-element", { timeout: 1000 }).click();
-      cy.get(".radio-element", { timeout: 1000 })
+      cy.get(".radio-element").click();
+      cy.get(".radio-element")
+        .wait(1000)
         .pseudoCss("background-color", "after")
         .parseColor()
         .should("equal", color);
