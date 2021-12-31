@@ -8,6 +8,7 @@ on:
       - config/**
       - github/**
       - package.json
+
 jobs:
   edge:
     runs-on: windows-latest
