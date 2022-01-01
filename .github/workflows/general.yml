@@ -1,13 +1,6 @@
 on:
   pull_request:
     branches: ["main"]
-    paths:
-      - src/**
-      - public/**
-      - cypress/**
-      - config/**
-      - github/**
-      - package.json
 
 jobs:
   general:
