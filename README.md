@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/edo92/Exo-Ui">
-    <img width="300" src="https://raw.githubusercontent.com/edo92/markdowntestx/main/.assets/logo.png?token=AH5SSOJIC3GCJVNRKPZCIMLB2WXBQ">
+    <img width="300" src="https://raw.githubusercontent.com/edo92/Exo-Ui/main/assets/logo.png">
   </a>
 </p>
 
